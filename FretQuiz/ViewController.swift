@@ -10,16 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var boxes: Array<UIView> = []
+    var instrStrings: Array<UIView> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let lineMaker = Lines()
-        view.insertSubview(lineMaker.generateLine(stringName: "E"), at: 0)
-        view.insertSubview(lineMaker.generateLine(stringName: "A"), at: 0)
-        view.insertSubview(lineMaker.generateLine(stringName: "D"), at: 0)
-        view.insertSubview(lineMaker.generateLine(stringName: "G"), at: 0)    }
+        instrStrings.append(lineMaker.generateLine(stringName: "E"))
+        instrStrings.append(lineMaker.generateLine(stringName: "A"))
+        instrStrings.append(lineMaker.generateLine(stringName: "D"))
+        instrStrings.append(lineMaker.generateLine(stringName: "G"))
+        
+        for strng in instrStrings {
+            view.addSubview(strng)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
