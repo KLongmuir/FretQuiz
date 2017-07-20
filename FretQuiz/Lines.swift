@@ -22,16 +22,16 @@ class Lines {
     
     func nameToLocation(name: String) -> CGRect {
         if(name == "E"){
-            return CGRect(x: 225, y: 300, width: 550, height: 10)
+            return CGRect(x: 225, y: 300, width: 550, height: 5)
         }
         else if(name == "A"){
-            return CGRect(x: 225, y: 250, width: 550, height: 10)
+            return CGRect(x: 225, y: 250, width: 550, height: 5)
         }
         else if(name == "D"){
-            return CGRect(x: 225, y: 200, width: 550, height: 10)
+            return CGRect(x: 225, y: 200, width: 550, height: 5)
         }
         else if(name == "G"){
-            return CGRect(x: 225, y: 150, width: 550, height: 10)
+            return CGRect(x: 225, y: 150, width: 550, height: 5)
         }
         else {
             return CGRect(x: 0, y: 0, width: 0, height: 0)
