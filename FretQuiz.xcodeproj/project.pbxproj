@@ -15,7 +15,6 @@
 		95E479821F15432D00951170 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E479801F15432D00951170 /* LaunchScreen.storyboard */; };
 		95E4798D1F15432D00951170 /* FretQuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E4798C1F15432D00951170 /* FretQuizTests.swift */; };
 		95E479981F15432D00951170 /* FretQuizUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E479971F15432D00951170 /* FretQuizUITests.swift */; };
-		95E479A61F15451600951170 /* DrawLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E479A51F15451600951170 /* DrawLines.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +49,6 @@
 		95E479931F15432D00951170 /* FretQuizUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FretQuizUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E479971F15432D00951170 /* FretQuizUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FretQuizUITests.swift; sourceTree = "<group>"; };
 		95E479991F15432D00951170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		95E479A51F15451600951170 /* DrawLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawLines.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +105,6 @@
 				95E4797E1F15432D00951170 /* Assets.xcassets */,
 				95E479801F15432D00951170 /* LaunchScreen.storyboard */,
 				95E479831F15432D00951170 /* Info.plist */,
-				95E479A51F15451600951170 /* DrawLines.swift */,
 				95DE4A691F20D1F5007A4DF7 /* Lines.swift */,
 			);
 			path = FretQuiz;
@@ -271,7 +268,6 @@
 				95E4797A1F15432D00951170 /* ViewController.swift in Sources */,
 				95E479781F15432D00951170 /* AppDelegate.swift in Sources */,
 				95DE4A6A1F20D1F5007A4DF7 /* Lines.swift in Sources */,
-				95E479A61F15451600951170 /* DrawLines.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
