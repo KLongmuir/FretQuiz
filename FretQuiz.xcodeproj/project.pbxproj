@@ -10,7 +10,7 @@
 		95DE4A6A1F20D1F5007A4DF7 /* Lines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DE4A691F20D1F5007A4DF7 /* Lines.swift */; };
 		95E479781F15432D00951170 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E479771F15432D00951170 /* AppDelegate.swift */; };
 		95E4797A1F15432D00951170 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E479791F15432D00951170 /* ViewController.swift */; };
-		95E4797D1F15432D00951170 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E4797B1F15432D00951170 /* Main.storyboard */; };
+		95E4797D1F15432D00951170 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E4797B1F15432D00951170 /* Main.storyboard */; settings = {ASSET_TAGS = (hello, ); }; };
 		95E4797F1F15432D00951170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95E4797E1F15432D00951170 /* Assets.xcassets */; };
 		95E479821F15432D00951170 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E479801F15432D00951170 /* LaunchScreen.storyboard */; };
 		95E4798D1F15432D00951170 /* FretQuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E4798C1F15432D00951170 /* FretQuizTests.swift */; };
@@ -190,6 +190,9 @@
 		95E4796C1F15432D00951170 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					hello,
+				);
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Longmuir, Kevin";
