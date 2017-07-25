@@ -33,27 +33,20 @@ class ViewController: UIViewController {
     @IBOutlet var GSharpButton: UIButton!
     
     @IBOutlet var testLabel: UILabel!
+    @IBOutlet var noteName: UILabel!
     
-    var whoPressed_S = ""
+    @IBOutlet var rightWrong: UILabel!
+    var whoPressed_S = "PLAY"
+    var isPlaying = false
+    let priority = DispatchQueue.GlobalQueuePriority.default
     
     let possibleNotes: Array<String> = ["A♭","A","A♯","B♭","B","C","C♯","D♭","D","D♯","E♭","E","E♯","F","F♯","G♭","G","G#"]
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let lineMaker = Lines()
-        instrStrings.append(lineMaker.generateLine(stringName: "E"))
-        instrStrings.append(lineMaker.generateLine(stringName: "A"))
-        instrStrings.append(lineMaker.generateLine(stringName: "D"))
-        instrStrings.append(lineMaker.generateLine(stringName: "G"))
         
-        for strng in instrStrings {
-            view.addSubview(strng)
-        }
-        
-        // playGame()
-        
+        makeFretboard()
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,20 +54,41 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func makeFretboard(){
+        let lineMaker = Lines()
+        instrStrings.append(lineMaker.generateLine(stringName: "E"))
+        instrStrings.append(lineMaker.generateLine(stringName: "A"))
+        instrStrings.append(lineMaker.generateLine(stringName: "D"))
+        instrStrings.append(lineMaker.generateLine(stringName: "G"))
+        
+        for strng in instrStrings {
+            self.view.addSubview(strng)
+        }
+        print("Fretboard is set up")
+    }
+    
     func playGame(){
-        sleep(2)
-        for num in 1...10 {
-            while(whoPressed_S == ""){}
-            let randIndex = Int(arc4random_uniform(UInt32(possibleNotes.count - 1)))
-            if possibleNotes[randIndex] == whoPressed_S {
-                print("Correct")
-                whoPressed_S = ""
+        var correct = false
+        var randIndex = -1
+        DispatchQueue.global(qos: .default).async {
+            while(self.isPlaying == true){
+                randIndex = Int(arc4random_uniform(UInt32(self.possibleNotes.count - 1)))
+                correct = false
+
+                while(correct == false){
+                    DispatchQueue.main.async {
+                        self.noteName.text = self.possibleNotes[randIndex]
+                    }
+                    if(self.possibleNotes[randIndex] == self.whoPressed_S){
+                        print("Correct")
+                        DispatchQueue.main.async {
+                            self.rightWrong.text = "Correct"
+                            correct = true
+                            self.whoPressed_S = ""
+                        }
+                    }
+                }
             }
-                
-            else {
-                print("incorrect")
-            }
-            
         }
     }
     
@@ -99,16 +113,20 @@ class ViewController: UIViewController {
         noteButtons.append(GSharpButton)
     }
     
-    @IBAction func buttonPressed(_ sender: UIButton){
-        if let text = sender.titleLabel?.text {
-            print(text)
-            //whoPressed(label: text)
-        }
-        //else { whoPressed(label: "") }
-    }
-    
     func whoPressed(label: String) {
         whoPressed_S = label
     }
+    
+    @IBAction func buttonPressed(_ sender: UIButton){
+        if let text = sender.titleLabel?.text {
+            whoPressed(label: text)
+        }
+    }
+    
+    @IBAction func playIt(_ sender: UIButton) {
+        isPlaying = true
+        playGame()
+    }
+    
 }
 
