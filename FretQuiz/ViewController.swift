@@ -9,10 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    var instrStrings: Array<UIView> = []
-    var noteButtons: Array<UIButton> = []
-
+    // BUTTONS
     @IBOutlet var AFlatButton: UIButton!
     @IBOutlet var AButton: UIButton!
     @IBOutlet var ASharpButton: UIButton!
@@ -32,13 +29,20 @@ class ViewController: UIViewController {
     @IBOutlet var GButton: UIButton!
     @IBOutlet var GSharpButton: UIButton!
     
+    // LABELS
     @IBOutlet var testLabel: UILabel!
     @IBOutlet var noteName: UILabel!
-    
+    @IBOutlet var pointsLabel: UILabel!
     @IBOutlet var rightWrong: UILabel!
-    var whoPressed_S = "PLAY"
+    
+    // CONSTANTS
+    let priority = DispatchQoS.QoSClass.default
+    
+    // VARIABLES
+    var instrStrings: Array<UIView> = []
+    var noteButtons: Array<UIButton> = []
     var isPlaying = false
-    let priority = DispatchQueue.GlobalQueuePriority.default
+    var points = 0
     
     let possibleNotes: Array<String> = ["A♭","A","A♯","B♭","B","C","C♯","D♭","D","D♯","E♭","E","E♯","F","F♯","G♭","G","G#"]
     
@@ -67,31 +71,6 @@ class ViewController: UIViewController {
         print("Fretboard is set up")
     }
     
-    func playGame(){
-        var correct = false
-        var randIndex = -1
-        DispatchQueue.global(qos: .default).async {
-            while(self.isPlaying == true){
-                randIndex = Int(arc4random_uniform(UInt32(self.possibleNotes.count - 1)))
-                correct = false
-
-                while(correct == false){
-                    DispatchQueue.main.async {
-                        self.noteName.text = self.possibleNotes[randIndex]
-                    }
-                    if(self.possibleNotes[randIndex] == self.whoPressed_S){
-                        print("Correct")
-                        DispatchQueue.main.async {
-                            self.rightWrong.text = "Correct"
-                            correct = true
-                            self.whoPressed_S = ""
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
     func addNoteButtons(){
         noteButtons.append(AFlatButton)
         noteButtons.append(AButton)
@@ -113,19 +92,31 @@ class ViewController: UIViewController {
         noteButtons.append(GSharpButton)
     }
     
-    func whoPressed(label: String) {
-        whoPressed_S = label
+    func newNote(){
+        if isPlaying == true{
+            self.noteName.text = self.possibleNotes[Int(arc4random_uniform(UInt32(self.possibleNotes.count - 1)))]
+        }
     }
     
     @IBAction func buttonPressed(_ sender: UIButton){
-        if let text = sender.titleLabel?.text {
-            whoPressed(label: text)
+        if self.noteName.text == sender.titleLabel?.text {
+            self.rightWrong.text = "Correct"
+            self.rightWrong.textColor = UIColor.green
+            points += 1
+            self.pointsLabel.text = "Points: " + String(points)
+            self.newNote()
+        }
+        else {
+            self.rightWrong.text = "Incorrect"
+            self.rightWrong.textColor = UIColor.red
         }
     }
     
     @IBAction func playIt(_ sender: UIButton) {
-        isPlaying = true
-        playGame()
+        if isPlaying == false {
+            isPlaying = true
+            self.newNote()
+        }
     }
     
 }
