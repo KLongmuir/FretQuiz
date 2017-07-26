@@ -107,7 +107,8 @@ class ViewController: UIViewController {
         instrFrets.append(lineMaker.generateVerticalLine(stringName: "10"))
         instrFrets.append(lineMaker.generateVerticalLine(stringName: "11"))
         instrFrets.append(lineMaker.generateVerticalLine(stringName: "12"))
-        view.addSubvoew(lineMaker.generateCircle(stringName: "3Dot"))
+        
+        let fretMarkers: Array<CAShapeLayer> = lineMaker.generateFretMarkers()
 
         for strng in instrStrings {
             self.view.addSubview(strng)
@@ -115,6 +116,10 @@ class ViewController: UIViewController {
         
         for fret in instrFrets {
             self.view.addSubview(fret)
+        }
+        
+        for marker in fretMarkers {
+            self.view.layer.addSublayer(marker)
         }
         
         print("Fretboard is set up")

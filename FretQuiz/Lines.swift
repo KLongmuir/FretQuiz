@@ -56,6 +56,81 @@ class Lines {
         return shapeLayer
     }
     
+    func generateFretMarkers() -> Array<CAShapeLayer> {
+        var fretMarkers: Array<CAShapeLayer> = []
+        
+        let markerThree = UIBezierPath(arcCenter: CGPoint(x: (19 + (fretWidth*4)),y: 375), radius: CGFloat(6), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
+        let shapeLayer1 = CAShapeLayer()
+        shapeLayer1.path = markerThree.cgPath
+        //change the fill color
+        shapeLayer1.fillColor = UIColor.black.cgColor
+        //you can change the stroke color
+        shapeLayer1.strokeColor = UIColor.black.cgColor
+        //you can change the line width
+        shapeLayer1.lineWidth = 3.0
+        
+        let markerFive = UIBezierPath(arcCenter: CGPoint(x: (19 + (fretWidth*6)),y: 375), radius: CGFloat(6), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
+        let shapeLayer2 = CAShapeLayer()
+        shapeLayer2.path = markerFive.cgPath
+        //change the fill color
+        shapeLayer2.fillColor = UIColor.black.cgColor
+        //you can change the stroke color
+        shapeLayer2.strokeColor = UIColor.black.cgColor
+        //you can change the line width
+        shapeLayer2.lineWidth = 3.0
+        
+        let markerSeven = UIBezierPath(arcCenter: CGPoint(x: (19 + (fretWidth*8)),y: 375), radius: CGFloat(6), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
+        let shapeLayer3 = CAShapeLayer()
+        shapeLayer3.path = markerSeven.cgPath
+        //change the fill color
+        shapeLayer3.fillColor = UIColor.black.cgColor
+        //you can change the stroke color
+        shapeLayer3.strokeColor = UIColor.black.cgColor
+        //you can change the line width
+        shapeLayer3.lineWidth = 3.0
+        
+        
+        let markerNine = UIBezierPath(arcCenter: CGPoint(x: (19 + (fretWidth*10)),y: 375), radius: CGFloat(6), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
+        let shapeLayer4 = CAShapeLayer()
+        shapeLayer4.path = markerNine.cgPath
+        //change the fill color
+        shapeLayer4.fillColor = UIColor.black.cgColor
+        //you can change the stroke color
+        shapeLayer4.strokeColor = UIColor.black.cgColor
+        //you can change the line width
+        shapeLayer4.lineWidth = 3.0
+        
+        let markerTwelveOne = UIBezierPath(arcCenter: CGPoint(x: (10 + (fretWidth*13)),y: 375), radius: CGFloat(6), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
+        let shapeLayer5 = CAShapeLayer()
+        shapeLayer5.path = markerTwelveOne.cgPath
+        //change the fill color
+        shapeLayer5.fillColor = UIColor.black.cgColor
+        //you can change the stroke color
+        shapeLayer5.strokeColor = UIColor.black.cgColor
+        //you can change the line width
+        shapeLayer5.lineWidth = 3.0
+        
+        let markerTwelveTwo = UIBezierPath(arcCenter: CGPoint(x: (30 + (fretWidth*13)),y: 375), radius: CGFloat(6), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
+        let shapeLayer6 = CAShapeLayer()
+        shapeLayer6.path = markerTwelveTwo.cgPath
+        //change the fill color
+        shapeLayer6.fillColor = UIColor.black.cgColor
+        //you can change the stroke color
+        shapeLayer6.strokeColor = UIColor.black.cgColor
+        //you can change the line width
+        shapeLayer6.lineWidth = 3.0
+        
+        fretMarkers.append(shapeLayer1)
+        fretMarkers.append(shapeLayer2)
+        fretMarkers.append(shapeLayer3)
+        fretMarkers.append(shapeLayer4)
+        fretMarkers.append(shapeLayer5)
+        fretMarkers.append(shapeLayer6)
+        
+        return fretMarkers
+
+    }
+    
     
     func generateHorizontalLine(stringName: String) -> UIView {
         let location = nameToLocation(name: stringName)
@@ -70,9 +145,6 @@ class Lines {
         let newLine = UIView(frame: location)
         if (stringName == "0"){
             newLine.backgroundColor = UIColor.gray
-        }
-        else if(stringName == "3" || stringName == "5" || stringName == "7" || stringName == "9" || stringName == "12"){
-            newLine.backgroundColor = UIColor.blue
         }
         else {
             newLine.backgroundColor = UIColor.darkGray
