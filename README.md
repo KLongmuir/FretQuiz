@@ -9,7 +9,7 @@ See how high you can get your point count!
 
 ### Current Version
 
-Currently only supports Bass guitar with frets 1 through 12.
+Currently only supports Bass guitar with frets 1 through 12.  
 Instrument configurations coming later
 
 # Screenshot
