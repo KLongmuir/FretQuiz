@@ -12,6 +12,6 @@ See how high you can get your point count!
 Currently only supports Bass guitar with frets 1 through 12.  
 Instrument configurations coming later
 
-# Screenshot
+## Screenshot
 
 ![FretQuiz Screenshot](screenshots/main.png?raw=true "FretQuiz Screenshot")
