@@ -1,2 +1,2 @@
 # FretQuiz
-Fretboard Quiz App for iPad written in Swift
+Fretboard Quiz App for iPad
