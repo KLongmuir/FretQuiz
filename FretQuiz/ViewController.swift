@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     @IBOutlet var GFlatButton: UIButton!
     @IBOutlet var GButton: UIButton!
     @IBOutlet var GSharpButton: UIButton!
+    @IBOutlet var playButton: UIButton!
     
     // LABELS
     @IBOutlet var testLabel: UILabel!
@@ -37,19 +38,40 @@ class ViewController: UIViewController {
     
     // CONSTANTS
     let priority = DispatchQoS.QoSClass.default
+    let screenSize: CGRect = UIScreen.main.bounds
     
     // VARIABLES
     var instrStrings: Array<UIView> = []
+    var instrFrets: Array<UIView> = []
     var noteButtons: Array<UIButton> = []
     var isPlaying = false
     var points = 0
+    
+    // COLORS
+    let myGreen = UIColor(red: 103/255.0, green: 178/255.0, blue: 104/255.0, alpha: 1.0)
     
     let possibleNotes: Array<String> = ["A♭","A","A♯","B♭","B","C","C♯","D♭","D","D♯","E♭","E","E♯","F","F♯","G♭","G","G#"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically from a nib.let screenSize = UIScreen.main.bounds
+        addNoteButtons()
         
+        for button in noteButtons {
+            button.layer.backgroundColor = UIColor(red: 217/255.0, green: 217/255.0, blue: 217/255.0, alpha: 1.0).cgColor
+            button.layer.cornerRadius = 20
+            button.layer.borderWidth = 2
+            button.layer.borderColor = UIColor.gray.cgColor
+            button.setTitleColor(UIColor.black, for: UIControlState.normal)
+
+        }
+        
+        playButton.layer.backgroundColor = myGreen.cgColor
+        playButton.layer.cornerRadius = 25
+        playButton.layer.borderWidth = 2
+        playButton.layer.borderColor = myGreen.cgColor
+        playButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+
         makeFretboard()
     }
 
@@ -59,15 +81,33 @@ class ViewController: UIViewController {
     }
     
     func makeFretboard(){
-        let lineMaker = Lines()
-        instrStrings.append(lineMaker.generateLine(stringName: "E"))
-        instrStrings.append(lineMaker.generateLine(stringName: "A"))
-        instrStrings.append(lineMaker.generateLine(stringName: "D"))
-        instrStrings.append(lineMaker.generateLine(stringName: "G"))
-        
+        let lineMaker = Lines(screenDimensions: screenSize)
+        instrStrings.append(lineMaker.generateHorizontalLine(stringName: "E"))
+        instrStrings.append(lineMaker.generateHorizontalLine(stringName: "A"))
+        instrStrings.append(lineMaker.generateHorizontalLine(stringName: "D"))
+        instrStrings.append(lineMaker.generateHorizontalLine(stringName: "G"))
+        instrFrets.append(lineMaker.generateVerticalLine(stringName: "1"))
+        instrFrets.append(lineMaker.generateVerticalLine(stringName: "2"))
+        instrFrets.append(lineMaker.generateVerticalLine(stringName: "3"))
+        instrFrets.append(lineMaker.generateVerticalLine(stringName: "4"))
+        instrFrets.append(lineMaker.generateVerticalLine(stringName: "5"))
+        instrFrets.append(lineMaker.generateVerticalLine(stringName: "6"))
+        instrFrets.append(lineMaker.generateVerticalLine(stringName: "7"))
+        instrFrets.append(lineMaker.generateVerticalLine(stringName: "8"))
+        instrFrets.append(lineMaker.generateVerticalLine(stringName: "9"))
+        instrFrets.append(lineMaker.generateVerticalLine(stringName: "10"))
+        instrFrets.append(lineMaker.generateVerticalLine(stringName: "11"))
+        instrFrets.append(lineMaker.generateVerticalLine(stringName: "12"))
+        instrFrets.append(lineMaker.generateVerticalLine(stringName: "13"))
+
         for strng in instrStrings {
             self.view.addSubview(strng)
         }
+        
+        for fret in instrFrets {
+            self.view.addSubview(fret)
+        }
+        
         print("Fretboard is set up")
     }
     
@@ -90,6 +130,7 @@ class ViewController: UIViewController {
         noteButtons.append(GFlatButton)
         noteButtons.append(GButton)
         noteButtons.append(GSharpButton)
+
     }
     
     func newNote(){
@@ -99,9 +140,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonPressed(_ sender: UIButton){
+        FButton.backgroundColor = .clear
+        FButton.layer.cornerRadius = 20
+        FButton.layer.borderWidth = 1
+        FButton.layer.borderColor = UIColor.black.cgColor
         if self.noteName.text == sender.titleLabel?.text {
             self.rightWrong.text = "Correct"
-            self.rightWrong.textColor = UIColor.green
+            self.rightWrong.textColor = myGreen
             points += 1
             self.pointsLabel.text = "Points: " + String(points)
             self.newNote()
@@ -109,6 +154,8 @@ class ViewController: UIViewController {
         else {
             self.rightWrong.text = "Incorrect"
             self.rightWrong.textColor = UIColor.red
+            points -= 1
+            self.pointsLabel.text = "Points: " + String(points)
         }
     }
     
