@@ -8,4 +8,4 @@ Getting notes right gives you points, getting notes wrong loses you points.
 See how high you can get your point count!
 
 # Screenshot
-![FretQuiz Screenshot](https://github.com/KLongmuir/FretQuiz/blob/master/screenshots/main.PNG")
+![FretQuiz Screenshot](https://github.com/KLongmuir/FretQuiz/blob/master/screenshots/main.png")
