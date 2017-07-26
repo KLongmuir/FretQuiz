@@ -68,8 +68,11 @@ class Lines {
     func generateVerticalLine(stringName: String) -> UIView {
         let location = nameToLocation(name: stringName)
         let newLine = UIView(frame: location)
-        if (stringName == "1"){
+        if (stringName == "0"){
             newLine.backgroundColor = UIColor.gray
+        }
+        else if(stringName == "3" || stringName == "5" || stringName == "7" || stringName == "9" || stringName == "12"){
+            newLine.backgroundColor = UIColor.blue
         }
         else {
             newLine.backgroundColor = UIColor.darkGray
@@ -91,11 +94,11 @@ class Lines {
         else if(name == "G"){
             return CGRect(x: 50, y: 100, width: screenWidth-100, height: 3)
         }
-        else if(name == "1"){
-            return CGRect(x: (50 + (fretWidth * Int(name)!)), y: 75, width: 5, height: 285)
+        else if(name == "0"){
+            return CGRect(x: (50 + (fretWidth * (Int(name)!+1))), y: 75, width: 5, height: 285)
         }
         else if(Int(name)! > 0 && Int(name)! < 14){
-            return CGRect(x: (50 + (fretWidth * Int(name)!)), y: 75, width: 3, height: 285)
+            return CGRect(x: (50 + (fretWidth * (Int(name)!+1))), y: 75, width: 3, height: 285)
             
         }
         else {

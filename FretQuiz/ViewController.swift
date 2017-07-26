@@ -94,6 +94,7 @@ class ViewController: UIViewController {
         instrStrings.append(lineMaker.generateHorizontalLine(stringName: "A"))
         instrStrings.append(lineMaker.generateHorizontalLine(stringName: "D"))
         instrStrings.append(lineMaker.generateHorizontalLine(stringName: "G"))
+        instrFrets.append(lineMaker.generateVerticalLine(stringName: "0"))
         instrFrets.append(lineMaker.generateVerticalLine(stringName: "1"))
         instrFrets.append(lineMaker.generateVerticalLine(stringName: "2"))
         instrFrets.append(lineMaker.generateVerticalLine(stringName: "3"))
@@ -106,7 +107,7 @@ class ViewController: UIViewController {
         instrFrets.append(lineMaker.generateVerticalLine(stringName: "10"))
         instrFrets.append(lineMaker.generateVerticalLine(stringName: "11"))
         instrFrets.append(lineMaker.generateVerticalLine(stringName: "12"))
-        instrFrets.append(lineMaker.generateVerticalLine(stringName: "13"))
+        view.addSubvoew(lineMaker.generateCircle(stringName: "3Dot"))
 
         for strng in instrStrings {
             self.view.addSubview(strng)
