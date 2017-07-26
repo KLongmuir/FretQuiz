@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     // BUTTONS
     @IBOutlet var AFlatButton: UIButton!
     @IBOutlet var AButton: UIButton!
@@ -35,6 +36,7 @@ class ViewController: UIViewController {
     @IBOutlet var noteName: UILabel!
     @IBOutlet var pointsLabel: UILabel!
     @IBOutlet var rightWrong: UILabel!
+    @IBOutlet var infoLabel: UILabel!
     
     // CONSTANTS
     let priority = DispatchQoS.QoSClass.default
@@ -42,7 +44,7 @@ class ViewController: UIViewController {
     let possibleNotes: Array<String> = ["A♭","A","A♯","B♭","B","C","C♯","D♭","D","D♯","E♭","E","E♯","F","F♯","G♭","G","G#"]
     let possibleFrets: Array<String> = ["E:0", "E:1", "E:2", "E:3", "E:4", "E:5", "E:6", "E:7", "E:8", "E:9", "E:10", "E:11", "E:12", "A:0", "A:1", "A:2", "A:3", "A:4", "A:5", "A:6", "A:7", "A:8", "A:9", "A:10", "A:11", "A:12", "D:0", "D:1", "D:2", "D:3", "D:4", "D:5", "D:6", "D:7", "D:8", "D:9", "D:10", "D:11", "D:12", "G:0", "G:1", "G:2", "G:3", "G:4", "G:5", "G:6", "G:7", "G:8", "G:9", "G:10", "G:11", "G:12"]
     
-    let fretsToNotes: [String:Array<String>] = ["E:0": ["E"], "E:1": ["F"], "E:2": ["F♯"], "E:3": ["G"], "E:4": ["G♯", "A♭"], "E:5": ["A"], "E:6": ["A♯", "B♭"], "E:7": ["B"], "E:8": ["C"], "E:9": ["C♯","D♭"], "E:10": ["D"], "E:11": ["D♯","E♭"], "E:12": ["E"], "A:0": ["A"], "A:1": ["A♯", "B♭"], "A:2": ["B"], "A:3": ["C"], "A:4": ["C"], "A:5": ["D"], "A:6": ["D♯","E♭"], "A:7": ["E"], "A:8": ["F"], "A:9": ["F♯","G♭"], "A:10": ["G"], "A:11": ["G♯", "A♭"], "A:12": ["A"], "D:0": ["D"], "D:1": ["D♯","E♭"], "D:2": ["E"], "D:3": ["F"], "D:4": ["F♯","G♭"], "D:5": ["G"], "D:6": ["G♯", "A♭"], "D:7": ["A"], "D:8": ["A♯", "B♭"], "D:9": ["B"], "D:10": ["C"], "D:11": ["C♯","D♭"], "D:12": ["D"], "G:0": ["G"], "G:1": ["G♯", "A♭"], "G:2": ["A"], "G:3": ["A♯", "B♭"], "G:4": ["B"], "G:5": ["C"], "G:6": ["C♯","D♭"], "G:7": ["D"], "G:8": ["D♯","E♭"], "G:9": ["E"], "G:10": ["F"], "G:11": ["F♯","G♭"], "G:12": ["G"]]
+    let fretsToNotes: [String:Array<String>] = ["E:0": ["E"], "E:1": ["F"], "E:2": ["F♯","G♭"], "E:3": ["G"], "E:4": ["G♯", "A♭"], "E:5": ["A"], "E:6": ["A♯", "B♭"], "E:7": ["B"], "E:8": ["C"], "E:9": ["C♯","D♭"], "E:10": ["D"], "E:11": ["D♯","E♭"], "E:12": ["E"], "A:0": ["A"], "A:1": ["A♯", "B♭"], "A:2": ["B"], "A:3": ["C"], "A:4": ["C♯","D♭"], "A:5": ["D"], "A:6": ["D♯","E♭"], "A:7": ["E"], "A:8": ["F"], "A:9": ["F♯","G♭"], "A:10": ["G"], "A:11": ["G♯", "A♭"], "A:12": ["A"], "D:0": ["D"], "D:1": ["D♯","E♭"], "D:2": ["E"], "D:3": ["F"], "D:4": ["F♯","G♭"], "D:5": ["G"], "D:6": ["G♯", "A♭"], "D:7": ["A"], "D:8": ["A♯", "B♭"], "D:9": ["B"], "D:10": ["C"], "D:11": ["C♯","D♭"], "D:12": ["D"], "G:0": ["G"], "G:1": ["G♯", "A♭"], "G:2": ["A"], "G:3": ["A♯", "B♭"], "G:4": ["B"], "G:5": ["C"], "G:6": ["C♯","D♭"], "G:7": ["D"], "G:8": ["D♯","E♭"], "G:9": ["E"], "G:10": ["F"], "G:11": ["F♯","G♭"], "G:12": ["G"]]
     
     let lineMaker = Lines(screenDimensions: UIScreen.main.bounds)
     
@@ -159,7 +161,7 @@ class ViewController: UIViewController {
         print(dotString)
         if (self.fretsToNotes[dotString]?.contains((sender.titleLabel?.text)!))! {
             dotReference.removeFromSuperlayer()
-            self.rightWrong.text = "Correct"
+            self.rightWrong.text = "Correct: " + (sender.titleLabel?.text)!
             self.rightWrong.textColor = myGreen
             points += 1
             self.pointsLabel.text = "Points: " + String(points)
@@ -176,6 +178,7 @@ class ViewController: UIViewController {
     @IBAction func playIt(_ sender: UIButton) {
         if isPlaying == false {
             isPlaying = true
+            self.infoLabel.text = "What note is this?"
             self.newNote()
         }
     }

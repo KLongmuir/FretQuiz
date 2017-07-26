@@ -204,8 +204,8 @@
                                     <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4O7-IU-fnj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What Note Is This?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IgE-Je-Fhl">
-                                <rect key="frame" x="340" y="444" width="320" height="49"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Press Play to Start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IgE-Je-Fhl">
+                                <rect key="frame" x="333" y="444" width="334" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="textColor"/>
@@ -234,7 +234,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Points:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5X-Am-OJ5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Points: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5X-Am-OJ5">
                                 <rect key="frame" x="48" y="451" width="115" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -291,6 +291,7 @@
                         <outlet property="GButton" destination="Bss-YM-rQa" id="bhJ-xf-6Ca"/>
                         <outlet property="GFlatButton" destination="MRC-bj-xPy" id="xvv-gC-KTP"/>
                         <outlet property="GSharpButton" destination="ekg-HG-bPS" id="iNQ-He-Vj2"/>
+                        <outlet property="infoLabel" destination="IgE-Je-Fhl" id="Ghv-7p-xsQ"/>
                         <outlet property="noteName" destination="B4n-bT-W3V" id="0qn-0v-nrw"/>
                         <outlet property="playButton" destination="yIl-r6-4aB" id="xiV-sg-VCm"/>
                         <outlet property="pointsLabel" destination="b5X-Am-OJ5" id="sOl-Sp-CR5"/>
